@@ -3,7 +3,8 @@ package com.ecommerce.abhinath;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateInput;
 
 // Author: Abhinath Jadhav
 // Date:   24/03/2022
@@ -25,8 +26,10 @@ public class RemoveUsers {
 			
 			user.getUserDirectory();
 			System.out.print("Enter User ID which you want to remove ->  ");
-			CheckInput checkInput =  new CheckInput();
-			int UserName = checkInput.getInput(10);
+			
+			//To validate user input
+			ValidateInput checkInput =  new ValidateInput();
+			int UserName = checkInput.getInput(UserDirectory.userId);
 			
 			// Prepare statement
 			preparedStatement.setInt(1, UserName);

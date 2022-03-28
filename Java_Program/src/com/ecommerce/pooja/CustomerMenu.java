@@ -1,7 +1,7 @@
 package com.ecommerce.pooja;
 
-import com.ecommerce.abhinath.CheckInput;
 import com.ecommerce.shivam.*;
+import com.ecommerce.validation.ValidateInput;
 
 
 //Author : Pooja
@@ -32,7 +32,7 @@ public class CustomerMenu
 			System.out.println("--------------------------------------------------------------------------");
 			System.out.print("Enter HotKey to perform operation of your choice ->  ");
 			
-			CheckInput checkInput = new CheckInput();
+			ValidateInput checkInput = new ValidateInput();
 			int customerChoice=checkInput.getInput(2);
 			switch(customerChoice)
 			{

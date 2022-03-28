@@ -3,8 +3,8 @@ package com.ecommerce.shivam;
 import java.sql.*;
 import java.util.*;
 
-import com.ecommerce.common.ConnectJDBC;
 import com.ecommerce.pooja.CustomerMenu;
+import com.ecommerce.validation.ConnectJDBC;
 
 //Author : Abhinath & shivam
 public class LogIn {

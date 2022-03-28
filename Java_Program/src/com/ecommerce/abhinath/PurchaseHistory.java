@@ -4,7 +4,9 @@ package com.ecommerce.abhinath;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.ecommerce.common.ConnectJDBC;
+
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateInput;
 
 // Author: Abhinath Jadhav
 // Date  : 24/03/2022
@@ -31,8 +33,10 @@ public class PurchaseHistory {
 						
 			System.out.print("Enter user ID whose purchase history you want to see ->  ");
 			
-			CheckInput checkInput = new CheckInput();
-			int UserID = checkInput.getInput(20);
+			//To validate user input
+			ValidateInput checkInput = new ValidateInput();
+			int UserID = checkInput.getInput(UserDirectory.userId);
+			
 			System.out.println("--------------------------------------------------------------------------");
 			
 			// Pass input to statement and execute

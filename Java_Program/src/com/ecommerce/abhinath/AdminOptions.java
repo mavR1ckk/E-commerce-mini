@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.ecommerce.shivam.LoginInterface;
 import com.ecommerce.shivam.LoginInterfaceImpl;
+import com.ecommerce.validation.ValidateInput;
 
 //Author: Abhinath Jadhav
 //Date:   26/03/2022
@@ -36,7 +37,7 @@ public class AdminOptions {
 	}
 	
 	public void getnextOpertaion() {
-		CheckInput checkInput = new CheckInput();
+		ValidateInput checkInput = new ValidateInput();
 		
 		System.out.println();
 		System.out.println("--------------------------------------------------------------------------");

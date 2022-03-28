@@ -2,7 +2,7 @@ package com.ecommerce.abhinath;
 
 import java.sql.*;
 
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
 
 //Author: Abhinath Jadhav
 //Date:   26/03/2022

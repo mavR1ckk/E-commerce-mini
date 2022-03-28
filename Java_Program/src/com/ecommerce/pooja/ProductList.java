@@ -1,11 +1,11 @@
 package com.ecommerce.pooja;
 
-import com.ecommerce.common.ConnectJDBC;
 import java.sql.*;
 
 import java.util.*;
 
-//Author : Pooja
+import com.ecommerce.validation.ConnectJDBC;
+
 public class ProductList 
 {
 	public static List<Integer> pid=new ArrayList<Integer>();

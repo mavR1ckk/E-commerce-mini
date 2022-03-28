@@ -4,12 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.ecommerce.abhinath.CheckInput;
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateInput;
 
-
-//Author : Nishigandha
-public class ProductDetails {
+public class AddProduct {
 	
 	public void setProducts(String ProductName,String Descriptions,float Price,int QTY) throws SQLException {
 		//Establish Connection	
@@ -24,6 +22,7 @@ public class ProductDetails {
 			preparedstatement.setString(2,Descriptions);
 			preparedstatement.setFloat(3,Price);
 			preparedstatement.setInt(4,QTY);
+			
 			// submit the sql statement to database..
 			preparedstatement.executeUpdate();
 			System.out.println("--------------------------------------------------------------------------");
@@ -39,20 +38,27 @@ public class ProductDetails {
 			preparedstatement.close();
 		}
 	} 
-         // Add products into productDetails by admin
+    
+	// Add products into productDetails by admin
 	public void addProducts() throws SQLException{
+		
 		Scanner sc = new Scanner(System.in);
-		CheckInput checkInput = new CheckInput();
-		System.out.print("1: \t \t \t Enter Product Name ->  ");
+		
+		ValidateInput checkInput = new ValidateInput();
+		System.out.print("1: Enter Product Name ->  ");
+		
 		String ProductName = sc.next();
-		System.out.print("2: \t \t \t Enter Descriptions ->  ");
+		System.out.print("2: Enter Descriptions ->  ");
+		
 		String Descriptions= sc.next();
-		System.out.print("3: \t \t \t Enter Price ->         ");
+		System.out.print("3: Enter Price ->         ");
+		
 		float Price= checkInput.getInput(1000000);
-		System.out.print("4: \t \t \t Enter Qty ->           ");		
+		System.out.print("4: Enter Qty ->           ");		
 		
 	    int QTY = checkInput.getInput(100);
 	    System.out.println("--------------------------------------------------------------------------");
+	    
 	    //calling method setProducts to insertData into table.& pass user entry to Add the data into productdetails method
 	    setProducts(ProductName,Descriptions,Price,QTY);
 		

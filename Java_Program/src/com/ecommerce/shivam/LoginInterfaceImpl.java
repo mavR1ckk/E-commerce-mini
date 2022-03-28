@@ -3,14 +3,14 @@ package com.ecommerce.shivam;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.ecommerce.abhinath.CheckInput;
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateInput;
 
 //Author : Shivam
 public class LoginInterfaceImpl implements LoginInterface {
 
 	LogInOptions loginOptions = new LogInOptions();
-	CheckInput check = new CheckInput();
+	ValidateInput check = new ValidateInput();
 	
 	@Override
 	public void getUserInput() {

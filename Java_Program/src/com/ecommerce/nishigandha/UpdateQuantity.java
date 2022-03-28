@@ -4,9 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.ecommerce.abhinath.CheckInput;
-import com.ecommerce.common.ConnectJDBC;
 import com.ecommerce.pooja.ProductList;
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateInput;
 
 //Author : Nishigandha
 public class UpdateQuantity {
@@ -29,8 +29,10 @@ public class UpdateQuantity {
 			System.out.println("--------------------------------------------------------------------------");
 		 	System.out.print(" Enter ProductID which QTY needs to be updated      : ");
 		 	
-		 	CheckInput checkInput = new CheckInput();
-		 	int id= checkInput.getInput(10);	 	
+		 	// To validate user input
+		 	ValidateInput checkInput = new ValidateInput();
+		 	int id= checkInput.getInput(ProductList.pid);	 
+		 	
 		 	System.out.print(" Enter Quantity to be added      : ");			
 			int quantity= checkInput.getInput(100);
 			System.out.println();
@@ -48,8 +50,6 @@ public class UpdateQuantity {
 					 int totalqty = quantity+i;
 					System.out.println(" Total Quantity       : "+totalqty);
 		        }	 
-			 
-		  
 			//int totalqty=quantity+avlQuantity;
 		
 			preparedstatement.executeUpdate();

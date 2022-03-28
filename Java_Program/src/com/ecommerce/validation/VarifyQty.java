@@ -1,16 +1,13 @@
-package com.ecommerce.abhinath;
+package com.ecommerce.validation;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.ecommerce.common.ConnectJDBC;
 
-// Author : Abhinath jadhav
-// Date   : 26/03/2022
 public class VarifyQty {
 
-	
-	public boolean getvarifyQTY(int i, int k) {
+	// To check qty is available or not as per user request
+	public boolean getvarifyQTY(int prdouctID, int userQTY) {
 		
 		boolean check = false;
 				
@@ -20,12 +17,12 @@ public class VarifyQty {
 			
 			preparedstatement = ConnectJDBC.connection.prepareStatement("select * from  productdetails where ProductID=?");
 			
-			preparedstatement.setInt(1,i);
+			preparedstatement.setInt(1,prdouctID);
 			ResultSet rs=preparedstatement.executeQuery();
 			
 			while(rs.next()) {
 				int availQTY = rs.getInt(5);				
-				if(k<=availQTY) {						
+				if(userQTY<=availQTY) {						
 					check = true;
 				}				
 			}

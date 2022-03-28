@@ -3,7 +3,7 @@ package com.ecommerce.abhinath;
 import java.sql.*;
 
 import com.ecommerce.pooja.Purchase;
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
 
 // Author : Abhinath Jadhav
 // Date   : 26/02/2022      

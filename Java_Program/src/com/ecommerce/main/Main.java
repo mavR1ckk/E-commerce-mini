@@ -1,4 +1,4 @@
-package com.ecommerce.common;
+package com.ecommerce.main;
 
 import com.ecommerce.shivam.LoginInterfaceImpl;
 

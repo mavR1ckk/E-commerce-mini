@@ -7,13 +7,15 @@ import java.util.*;
 import com.ecommerce.abhinath.*;
 import com.ecommerce.nishigandha.UpdatePurchaseHistory;
 import com.ecommerce.shivam.LogIn;
+import com.ecommerce.validation.ValidateInput;
+import com.ecommerce.validation.VarifyQty;
 
 //Author : Pooja
 public class Purchase 
 {
 	
 	
-	CheckInput checkInput = new CheckInput();
+	ValidateInput checkInput = new ValidateInput();
 	UserNameCity userNameCity = new UserNameCity();
 	VarifyQty qty = new VarifyQty();
 	UpdatePurchaseHistory updatePurchaseHistory = new UpdatePurchaseHistory();
@@ -40,41 +42,49 @@ public class Purchase
 		//add number of product you want to buy
 		System.out.println("--------------------------------------------------------------------------");
 		System.out.print("Enter how many Product Do you want to buy ->  ");
+		
 		itemcount=checkInput.getInput(20);
-		if(itemcount==0)
+		
+		while(itemcount==0)
 		{
 			System.out.println("Please add some product into the cart:");
-			AddProduct();
+			itemcount=checkInput.getInput(20);
 		}
 		
 		purchaseList=new int[itemcount];
 		purchaseQTY=new int[itemcount];
 		q=new int[itemcount];
+		
 		try
 		{
 			System.out.println();			
 			for(int i=0;i<itemcount;i++){
-				System.out.print("Enter product numbers :");
 				
-				int j=checkInput.getInput(ProductList.productCount);//itemPurchase scanner class object accepts product number
+				System.out.print("Enter product Id to add in cart :");
+				
+				int j=checkInput.getInput(ProductList.pid);// To take user input and validate
 				
 				purchaseList[i]=j-1;//added product number in purchaseList array
 				
-				System.out.print("Enter product Qty : ");		
-				 quantity = checkInput.getInput(20); // to take item QTY.
+				System.out.print("Enter product Qty : ");	
+				
+				quantity = checkInput.getInput(20); // to take item QTY.
 				
 				System.out.println("Checking available QTY...");
 				
 				qty.getvarifyQTY(j,quantity);	// To varify qty
-				if (qty.getvarifyQTY(j,quantity)) {
-					Purchase.purchaseQTY[i] =quantity;
-					System.out.println("Product added succssfully.");
-					q[i]=quantity;
+				
+				while (qty.getvarifyQTY(j,quantity) == false) {
 					System.out.println();
-				}
-				else {
-					System.out.println("QTY unavailable, Not added to cart.");
-				}
+					System.out.print("QTY unavailable, Please change QTY.");
+					quantity = checkInput.getInput(20);
+				}	
+				
+				Purchase.purchaseQTY[i] =quantity;
+				System.out.println("Product added succssfully.");
+				q[i]=quantity;
+				System.out.println();
+				
 			}
 			System.out.println("--------------------------------------------------------------------------");
 			
@@ -104,7 +114,7 @@ public class Purchase
 		System.out.println("--------------------------------------------------------------------------");
 		System.out.print(" \n1.Goto cart \n2.Cancle  ->  ");
 		
-		CheckInput checkInput = new CheckInput();
+		ValidateInput checkInput = new ValidateInput();
 		int choice=checkInput.getInput(2);
 		System.out.println("--------------------------------------------------------------------------");
 		switch(choice)
@@ -150,7 +160,7 @@ public class Purchase
 		
 		System.out.println("--------------------------------------------------------------------------");
 		System.out.print(" \n1.Generate Bill \n2.Cancle  ->  ");
-		CheckInput checkInput = new CheckInput();
+		ValidateInput checkInput = new ValidateInput();
 		int choice=checkInput.getInput(2);
 		System.out.println("--------------------------------------------------------------------------");
 		switch(choice)

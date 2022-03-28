@@ -1,4 +1,4 @@
-package com.ecommerce.common;
+package com.ecommerce.validation;
 
 import java.sql.*;
 

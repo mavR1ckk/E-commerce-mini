@@ -1,15 +1,13 @@
-package com.ecommerce.abhinath;
+package com.ecommerce.validation;
 
 import java.sql.*;
 import java.util.*;
 
-import com.ecommerce.common.ConnectJDBC;
-
-//Author: Abhinath Jadhav
-//Date:   26/03/2022
-public class CheckUserName {
+public class ValidateUserName {
 	
 	public String getUserName() {
+		
+		// To take input from user and store in variable
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Choose your username : ");
 		String name = scanner.next();
@@ -44,10 +42,5 @@ public class CheckUserName {
 			e.printStackTrace();
 		}
 		return check;
-	}
-	public static void main(String[] args) {
-		CheckUserName checkUserName = new CheckUserName();
-		
-		System.out.println(checkUserName.varifyUserName("mavrickk"));
 	}
 }

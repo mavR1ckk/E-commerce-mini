@@ -4,12 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import com.ecommerce.abhinath.CheckUserName;
-import com.ecommerce.common.ConnectJDBC;
+import com.ecommerce.validation.ConnectJDBC;
+import com.ecommerce.validation.ValidateUserName;
 
-//Author : Shivam and Abhinath
 public class Register {
 	
+	// To store user credentials in database
 	public void getCustomerUserPass(String username, String password) throws SQLException {
 		PreparedStatement preparedstatement=null;
 		try {
@@ -25,6 +25,7 @@ public class Register {
 		}	
 	}
 	
+	// To store user information in database
 	public void getCustomerData(String name, String city, String contactnumber, String username) throws SQLException {
 		PreparedStatement preparedstatement1=null;
 		try {
@@ -46,30 +47,38 @@ public class Register {
 	}
 	public void registerUser() {
 		
+		// to get user information
 		System.out.println("Enter your Details for registartion...");
 		System.out.println();
+		
 		Scanner scanner=new Scanner(System.in);
 		System.out.print("Enter your name : ");
+		
 		String name=scanner.next();
 		System.out.print("Enter your city : ");
+		
 		String city=scanner.next();
 		System.out.print("Enter your contactnumber : ");
+		
 		String contactnumber=scanner.next();
 		System.out.println("--------------------------------------------------------------------------");
+				
 		// Rake userId and Password
-		
 		System.out.println("Enter unique username and password.");
 		System.out.println();
 		
-		CheckUserName checkUserName = new CheckUserName();
-		String username = checkUserName.getUserName();
+		ValidateUserName validateUserName = new ValidateUserName();
+		System.out.print("Choose your username : ");
+		String username = scanner.next();
 		
-		while (checkUserName.varifyUserName(username)==false) {
+		// To validate username
+		while (validateUserName.varifyUserName(username)==false) {
 			System.out.println("UserName not available. Try another Username.");
-			username = checkUserName.getUserName();
+			username = scanner.next();
 			System.out.println();
 		}
 		
+		// To take pasword
 		System.out.print("Choose your password : ");
 		String password=scanner.next();
 		
@@ -78,14 +87,13 @@ public class Register {
 		System.out.println("--------------------------------------------------------------------------");
 		System.out.println();
 		
-		if (checkUserName.varifyUserName(username)) {
-			try {
-				register.getCustomerData(name,city,contactnumber,username);
-				register.getCustomerUserPass(username,password);
-				logIn.getLogIn();
-			} catch (Exception e) {
+		// To store the data into database
+		try {
+			register.getCustomerData(name,city,contactnumber,username);
+			register.getCustomerUserPass(username,password);
+			logIn.getLogIn();
+		} catch (Exception e) {
 				e.printStackTrace();
-			}
-		}		
-	}
+		}
+	}	
 }

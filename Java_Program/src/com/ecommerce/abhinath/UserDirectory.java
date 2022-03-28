@@ -3,13 +3,16 @@ package com.ecommerce.abhinath;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import com.ecommerce.common.ConnectJDBC;
+import java.util.LinkedList;
+import java.util.List;
+
+import com.ecommerce.validation.ConnectJDBC;
 
 //Author: Abhinath Jadhav
 //Date:   26/03/2022
 public class UserDirectory {
 	
-	public static int userCount;
+	public static List<Integer> userId = new LinkedList<>();
 
 	public void getUserDirectory() throws SQLException {
 		// Required resources.
@@ -29,7 +32,9 @@ public class UserDirectory {
 			System.out.println("--------------------------------------------------------------------------");
 			
 			while(resultSet.next()) {
-				userCount++;
+				
+				
+				userId.add(resultSet.getInt(1)); // To store all the users in list
 				System.out.println("\t *User Id:            " + resultSet.getInt(1));
 				System.out.println("\t  User Name:          " + resultSet.getString(2));
 				System.out.println("\t  User City:          " + resultSet.getString(3));

@@ -2,6 +2,7 @@
 package com.ecommerce.abhinath;
 
 import com.ecommerce.nishigandha.*;
+import com.ecommerce.validation.ValidateInput;
 
 // Author: Abhinath jadhav
 // Date: 24/02/2022
@@ -13,7 +14,7 @@ public class AdminrightsImpl implements AdminRights{
 		adminOptions.getOptions();
 		System.out.println(); // For empty line
 		
-		ProductDetails productDetails =  new ProductDetails();
+		AddProduct productDetails =  new AddProduct();
 		RemoveUsers removeUsers = new RemoveUsers();
 		RemoveProducts removeProducts = new RemoveProducts();
 		UserDirectory userDirectory = new UserDirectory();
@@ -23,7 +24,7 @@ public class AdminrightsImpl implements AdminRights{
 		
 		// To get admin choice
 				
-		CheckInput checkInput = new CheckInput();
+		ValidateInput checkInput = new ValidateInput();
 		
 		System.out.print("Enter HotKey to perform operation of your choice ->  ");
 		int choice = checkInput.getInput(7);	

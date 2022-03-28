@@ -2,8 +2,8 @@ package com.ecommerce.nishigandha;
 
 import java.sql.PreparedStatement;
 import com.ecommerce.pooja.Purchase;
+import com.ecommerce.validation.ConnectJDBC;
 import com.ecommerce.abhinath.UserNameCity;
-import com.ecommerce.common.ConnectJDBC;
 
 //Author : Nishigandha
 public class UpdatePurchaseHistory{	

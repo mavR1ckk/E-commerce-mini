@@ -10,7 +10,4 @@ Admin user and password from database.
 Admin Id -> admin1
 pass     -> mh50k3320
 
-Existing UserId Pass in Data base
-'1', 'mavrickk', '12345'
-'2', 'shiv1', '12346'
-'3', 'nisha1', '12345'
+Register first then log in
